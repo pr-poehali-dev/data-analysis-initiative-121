@@ -1,8 +1,18 @@
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import type { SectionProps } from "@/types"
 
-export default function Section({ id, title, subtitle, content, isActive, showButton, buttonText }: SectionProps) {
+export default function Section({ id, title, subtitle, content, isActive, showButton, buttonText, showForm }: SectionProps) {
+  const [form, setForm] = useState({ name: '', phone: '', telegram: '' })
+  const [sent, setSent] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSent(true)
+  }
+
   return (
     <section id={id} className="relative h-screen w-full snap-start flex flex-col justify-center p-8 md:p-16 lg:p-24">
       {subtitle && (
@@ -32,6 +42,49 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
         >
           {content}
         </motion.p>
+      )}
+      {showForm && (
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isActive ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-10 max-w-md w-full"
+        >
+          {sent ? (
+            <p className="text-xl text-white">Спасибо! Мы свяжемся с вами в ближайшее время.</p>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <Input
+                placeholder="ФИО"
+                value={form.name}
+                onChange={e => setForm({ ...form, name: e.target.value })}
+                required
+                className="bg-white/10 border-white/20 text-white placeholder:text-neutral-400 focus:border-[#FF4D00]"
+              />
+              <Input
+                placeholder="Телефон"
+                type="tel"
+                value={form.phone}
+                onChange={e => setForm({ ...form, phone: e.target.value })}
+                required
+                className="bg-white/10 border-white/20 text-white placeholder:text-neutral-400 focus:border-[#FF4D00]"
+              />
+              <Input
+                placeholder="Telegram (@username)"
+                value={form.telegram}
+                onChange={e => setForm({ ...form, telegram: e.target.value })}
+                className="bg-white/10 border-white/20 text-white placeholder:text-neutral-400 focus:border-[#FF4D00]"
+              />
+              <Button
+                type="submit"
+                size="lg"
+                className="text-black bg-[#FF4D00] border-[#FF4D00] hover:bg-[#e04400] transition-colors mt-2"
+              >
+                Отправить заявку
+              </Button>
+            </form>
+          )}
+        </motion.div>
       )}
       {showButton && (
         <motion.div
