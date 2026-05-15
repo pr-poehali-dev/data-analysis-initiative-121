@@ -8,8 +8,13 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
   const [form, setForm] = useState({ name: '', phone: '', telegram: '' })
   const [sent, setSent] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    await fetch('https://functions.poehali.dev/879c0470-f3cd-482b-9b9b-cc662da18143', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form)
+    })
     setSent(true)
   }
 
