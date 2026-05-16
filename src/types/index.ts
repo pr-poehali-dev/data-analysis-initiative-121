@@ -7,7 +7,7 @@ export interface Section {
   content?: string
   showButton?: boolean
   buttonText?: string
-  showForm?: boolean
+  buttonHref?: string
 }
 
 export interface SectionProps extends Section {

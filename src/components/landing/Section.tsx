@@ -1,22 +1,7 @@
-import { useState, type FormEvent } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import type { SectionProps } from "@/types"
 
-export default function Section({ id, title, subtitle, content, isActive, showButton, buttonText, showForm }: SectionProps) {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', telegram: '' })
-  const [sent, setSent] = useState(false)
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-    await fetch('https://functions.poehali.dev/879c0470-f3cd-482b-9b9b-cc662da18143', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form)
-    })
-    setSent(true)
-  }
-
+export default function Section({ id, title, subtitle, content, isActive, showButton, buttonText, buttonHref }: SectionProps) {
   const animCls = `transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
 
   return (
@@ -34,60 +19,17 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
           {content}
         </p>
       )}
-      {showForm && (
-        <div className={`mt-10 max-w-md w-full transition-all duration-500 delay-300 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {sent ? (
-            <p className="text-xl text-white">Спасибо! Мы свяжемся с вами в ближайшее время.</p>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <Input
-                placeholder="ФИО"
-                value={form.name}
-                onChange={e => setForm({ ...form, name: e.target.value })}
-                required
-                className="bg-white/10 border-white/20 text-white placeholder:text-neutral-400 focus:border-[#FF4D00]"
-              />
-              <Input
-                placeholder="Телефон"
-                type="tel"
-                value={form.phone}
-                onChange={e => setForm({ ...form, phone: e.target.value })}
-                required
-                className="bg-white/10 border-white/20 text-white placeholder:text-neutral-400 focus:border-[#FF4D00]"
-              />
-              <Input
-                placeholder="Электронная почта"
-                type="email"
-                value={form.email}
-                onChange={e => setForm({ ...form, email: e.target.value })}
-                required
-                className="bg-white/10 border-white/20 text-white placeholder:text-neutral-400 focus:border-[#FF4D00]"
-              />
-              <Input
-                placeholder="Telegram (@username) — необязательно"
-                value={form.telegram}
-                onChange={e => setForm({ ...form, telegram: e.target.value })}
-                className="bg-white/10 border-white/20 text-white placeholder:text-neutral-400 focus:border-[#FF4D00]"
-              />
-              <Button
-                type="submit"
-                size="lg"
-                className="text-black bg-[#FF4D00] border-[#FF4D00] hover:bg-[#e04400] transition-colors mt-2"
-              >
-                Отправить заявку
-              </Button>
-            </form>
-          )}
-        </div>
-      )}
       {showButton && (
         <div className={`mt-12 md:mt-16 transition-all duration-500 delay-[400ms] ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Button
+            asChild
             variant="outline"
             size="lg"
             className="text-[#FF4D00] bg-transparent border-[#FF4D00] hover:bg-[#FF4D00] hover:text-black transition-colors"
           >
-            {buttonText}
+            <a href={buttonHref} target="_blank" rel="noopener noreferrer">
+              {buttonText}
+            </a>
           </Button>
         </div>
       )}

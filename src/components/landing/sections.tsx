@@ -6,7 +6,8 @@ export const sections = [
     subtitle: <Badge variant="outline" className="text-white border-white">Комиссия только после получения кредита</Badge>,
     title: "Кредит для жителей Кавказа. Без предоплаты.",
     showButton: true,
-    buttonText: 'Получить консультацию'
+    buttonText: 'Получить консультацию',
+    buttonHref: 'https://t.me/kredit1313bot_bot',
   },
   {
     id: 'about',
@@ -27,6 +28,8 @@ export const sections = [
     id: 'join',
     title: 'Оставьте заявку',
     content: 'Мы свяжемся с вами, подберём банк и сопроводим до выдачи кредита. Комиссия 5% только по результату.',
-    showForm: true,
+    showButton: true,
+    buttonText: 'Перейти в Telegram',
+    buttonHref: 'https://t.me/kredit1313bot_bot',
   },
 ]
