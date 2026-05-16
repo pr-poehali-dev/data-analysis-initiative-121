@@ -21,9 +21,10 @@ def handler(event: dict, context) -> dict:
     body = json.loads(event.get('body', '{}'))
     name = body.get('name', '').strip()
     phone = body.get('phone', '').strip()
+    email = body.get('email', '').strip()
     telegram = body.get('telegram', '').strip()
 
-    if not name or not phone:
+    if not name or not phone or not email:
         return {
             'statusCode': 400,
             'headers': {'Access-Control-Allow-Origin': '*'},
@@ -35,6 +36,7 @@ def handler(event: dict, context) -> dict:
         f"📋 *Новая заявка — Кредит 13*\n\n"
         f"👤 *ФИО:* {name}\n"
         f"📞 *Телефон:* {phone}\n"
+        f"✉️ *Email:* {email}\n"
         f"✈️ *Telegram:* {telegram if telegram else 'не указан'}"
     )
 

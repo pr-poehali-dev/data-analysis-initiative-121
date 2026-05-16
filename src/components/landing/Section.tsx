@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input"
 import type { SectionProps } from "@/types"
 
 export default function Section({ id, title, subtitle, content, isActive, showButton, buttonText, showForm }: SectionProps) {
-  const [form, setForm] = useState({ name: '', phone: '', telegram: '' })
+  const [form, setForm] = useState({ name: '', phone: '', email: '', telegram: '' })
   const [sent, setSent] = useState(false)
 
   const handleSubmit = async (e: FormEvent) => {
@@ -57,7 +57,15 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
                 className="bg-white/10 border-white/20 text-white placeholder:text-neutral-400 focus:border-[#FF4D00]"
               />
               <Input
-                placeholder="Telegram (@username)"
+                placeholder="Электронная почта"
+                type="email"
+                value={form.email}
+                onChange={e => setForm({ ...form, email: e.target.value })}
+                required
+                className="bg-white/10 border-white/20 text-white placeholder:text-neutral-400 focus:border-[#FF4D00]"
+              />
+              <Input
+                placeholder="Telegram (@username) — необязательно"
                 value={form.telegram}
                 onChange={e => setForm({ ...form, telegram: e.target.value })}
                 className="bg-white/10 border-white/20 text-white placeholder:text-neutral-400 focus:border-[#FF4D00]"
