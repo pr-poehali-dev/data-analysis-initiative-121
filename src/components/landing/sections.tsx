@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge"
+import type { Section } from "@/types"
 
-export const sections = [
+export const sections: Section[] = [
   {
     id: 'hero',
     subtitle: <Badge variant="outline" className="text-white border-white">Комиссия только после получения кредита</Badge>,
