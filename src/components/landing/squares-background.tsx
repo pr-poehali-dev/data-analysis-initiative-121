@@ -19,8 +19,6 @@ export function Squares({
 }: SquaresProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const requestRef = useRef<number>()
-  const numSquaresX = useRef<number>()
-  const numSquaresY = useRef<number>()
   const gridOffset = useRef({ x: 0, y: 0 })
   const [hoveredSquare, setHoveredSquare] = useState<{
     x: number
@@ -41,12 +39,7 @@ export function Squares({
       const rect = canvas.getBoundingClientRect()
       canvas.width = rect.width
       canvas.height = rect.height
-      numSquaresX.current = Math.ceil(canvas.width / squareSize) + 1
-      numSquaresY.current = Math.ceil(canvas.height / squareSize) + 1
     }
-
-    window.addEventListener("resize", resizeCanvas)
-    resizeCanvas()
 
     const drawGrid = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
