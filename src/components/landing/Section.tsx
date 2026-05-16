@@ -1,5 +1,4 @@
 import { useState, FormEvent } from "react"
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import type { SectionProps } from "@/types"
@@ -28,9 +27,7 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
           {subtitle}
         </div>
       )}
-      <h2
-        className={`text-4xl md:text-6xl lg:text-[5rem] xl:text-[6rem] font-bold leading-[1.1] tracking-tight max-w-4xl text-white ${anim()}`}
-      >
+      <h2 className={`text-4xl md:text-6xl lg:text-[5rem] xl:text-[6rem] font-bold leading-[1.1] tracking-tight max-w-4xl text-white ${anim()}`}>
         {title}
       </h2>
       {content && (
