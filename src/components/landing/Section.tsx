@@ -18,9 +18,8 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
     setSent(true)
   }
 
-  const anim = (delay = 0) =>
+  const anim = () =>
     `transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-      + (delay ? ` delay-[${delay}ms]` : '')
 
   return (
     <section id={id} className="relative h-screen w-full snap-start flex flex-col justify-center p-8 md:p-16 lg:p-24">
