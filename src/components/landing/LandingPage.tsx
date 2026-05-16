@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 import Section from './Section'
 import Layout from './Layout'
 import { sections } from './sections'
@@ -51,9 +52,9 @@ export default function LandingPage() {
           />
         ))}
       </nav>
-      <div
-        className="fixed top-0 left-0 right-0 h-0.5 bg-white origin-left z-30 transition-transform duration-150"
-        style={{ transform: `scaleX(${scrollProgress})` }}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-0.5 bg-white origin-left z-30"
+        style={{ scaleX: scrollProgress }}
       />
       <div
         ref={containerRef}
