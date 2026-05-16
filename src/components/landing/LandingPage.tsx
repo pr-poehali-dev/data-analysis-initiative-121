@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+
 import Section from './Section'
 import Layout from './Layout'
 import { sections } from './sections'
