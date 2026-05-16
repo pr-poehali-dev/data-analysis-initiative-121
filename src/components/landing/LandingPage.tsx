@@ -13,8 +13,7 @@ export default function LandingPage() {
     const handleScroll = () => {
       if (containerRef.current) {
         const { scrollTop, scrollHeight, clientHeight } = containerRef.current
-        const windowHeight = window.innerHeight
-        setActiveSection(Math.floor(scrollTop / windowHeight))
+        setActiveSection(Math.floor(scrollTop / window.innerHeight))
         setScrollProgress(scrollTop / (scrollHeight - clientHeight))
       }
     }
