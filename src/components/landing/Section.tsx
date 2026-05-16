@@ -17,17 +17,16 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
     setSent(true)
   }
 
-  const anim = () =>
-    `transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+  const animCls = `transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
 
   return (
     <section id={id} className="relative h-screen w-full snap-start flex flex-col justify-center p-8 md:p-16 lg:p-24">
       {subtitle && (
-        <div className={`mb-12 ${anim()}`}>
+        <div className={`mb-12 ${animCls}`}>
           {subtitle}
         </div>
       )}
-      <h2 className={`text-4xl md:text-6xl lg:text-[5rem] xl:text-[6rem] font-bold leading-[1.1] tracking-tight max-w-4xl text-white ${anim()}`}>
+      <h2 className={`text-4xl md:text-6xl lg:text-[5rem] xl:text-[6rem] font-bold leading-[1.1] tracking-tight max-w-4xl text-white ${animCls}`}>
         {title}
       </h2>
       {content && (
