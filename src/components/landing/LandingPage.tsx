@@ -1,22 +1,20 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion, useScroll, useSpring } from 'framer-motion'
 import Section from './Section'
 import Layout from './Layout'
 import { sections } from './sections'
 
 export default function LandingPage() {
   const [activeSection, setActiveSection] = useState(0)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ container: containerRef })
-  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
 
   useEffect(() => {
     const handleScroll = () => {
       if (containerRef.current) {
-        const scrollPosition = containerRef.current.scrollTop
+        const { scrollTop, scrollHeight, clientHeight } = containerRef.current
         const windowHeight = window.innerHeight
-        const newActiveSection = Math.floor(scrollPosition / windowHeight)
-        setActiveSection(newActiveSection)
+        setActiveSection(Math.floor(scrollTop / windowHeight))
+        setScrollProgress(scrollTop / (scrollHeight - clientHeight))
       }
     }
 
@@ -54,9 +52,9 @@ export default function LandingPage() {
           />
         ))}
       </nav>
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-0.5 bg-white origin-left z-30"
-        style={{ scaleX }}
+      <div
+        className="fixed top-0 left-0 right-0 h-0.5 bg-white origin-left z-30 transition-transform duration-150"
+        style={{ transform: `scaleX(${scrollProgress})` }}
       />
       <div
         ref={containerRef}

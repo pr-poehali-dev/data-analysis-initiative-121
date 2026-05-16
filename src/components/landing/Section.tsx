@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import type { SectionProps } from "@/types"
@@ -18,43 +17,29 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
     setSent(true)
   }
 
+  const anim = (delay = 0) =>
+    `transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+      + (delay ? ` delay-[${delay}ms]` : '')
+
   return (
     <section id={id} className="relative h-screen w-full snap-start flex flex-col justify-center p-8 md:p-16 lg:p-24">
       {subtitle && (
-        <motion.div
-          className="mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isActive ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-        >
+        <div className={`mb-12 ${anim()}`}>
           {subtitle}
-        </motion.div>
+        </div>
       )}
-      <motion.h2
-        className="text-4xl md:text-6xl lg:text-[5rem] xl:text-[6rem] font-bold leading-[1.1] tracking-tight max-w-4xl text-white"
-        initial={{ opacity: 0, y: 50 }}
-        animate={isActive ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
+      <h2
+        className={`text-4xl md:text-6xl lg:text-[5rem] xl:text-[6rem] font-bold leading-[1.1] tracking-tight max-w-4xl text-white ${anim()}`}
       >
         {title}
-      </motion.h2>
+      </h2>
       {content && (
-        <motion.p
-          className="text-lg md:text-xl lg:text-2xl max-w-2xl mt-6 text-neutral-400"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isActive ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+        <p className={`text-lg md:text-xl lg:text-2xl max-w-2xl mt-6 text-neutral-400 transition-all duration-500 delay-200 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {content}
-        </motion.p>
+        </p>
       )}
       {showForm && (
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isActive ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10 max-w-md w-full"
-        >
+        <div className={`mt-10 max-w-md w-full transition-all duration-500 delay-300 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {sent ? (
             <p className="text-xl text-white">Спасибо! Мы свяжемся с вами в ближайшее время.</p>
           ) : (
@@ -89,15 +74,10 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
               </Button>
             </form>
           )}
-        </motion.div>
+        </div>
       )}
       {showButton && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isActive ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-12 md:mt-16"
-        >
+        <div className={`mt-12 md:mt-16 transition-all duration-500 delay-[400ms] ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Button
             variant="outline"
             size="lg"
@@ -105,7 +85,7 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
           >
             {buttonText}
           </Button>
-        </motion.div>
+        </div>
       )}
     </section>
   )
