@@ -28,9 +28,7 @@ export const sections: Section[] = [
   {
     id: 'join',
     title: 'Оставьте заявку',
-    content: 'Мы свяжемся с вами, подберём банк и сопроводим до выдачи кредита. Комиссия 5% только по результату.',
-    showButton: true,
-    buttonText: 'Перейти в Telegram',
-    buttonHref: 'https://t.me/kredit1313bot_bot',
+    content: 'Заполните форму — мы свяжемся с вами, подберём банк и сопроводим до выдачи кредита. Комиссия 5% только по результату.',
+    showForm: true,
   },
 ]

@@ -1,0 +1,45 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Создание заявки",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "full_name": "Иванов Иван Иванович",
+        "phone": "+79991112233",
+        "email": "ivan@example.com",
+        "telegram": "@ivanov"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {"ok": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Отсутствие обязательного поля",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "phone": "+79991112233",
+        "email": "ivan@example.com"
+      },
+      "expectedStatus": 400
+    },
+    {
+      "name": "Некорректный email",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "full_name": "Петров",
+        "phone": "+79991112233",
+        "email": "bad-email"
+      },
+      "expectedStatus": 400
+    }
+  ]
+}

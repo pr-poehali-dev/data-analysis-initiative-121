@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button"
 import type { SectionProps } from "@/types"
+import LeadForm from "./LeadForm"
 
-export default function Section({ id, title, subtitle, content, isActive, showButton, buttonText, buttonHref }: SectionProps) {
+export default function Section({ id, title, subtitle, content, isActive, showButton, buttonText, buttonHref, showForm }: SectionProps) {
   const animCls = `transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
 
   return (
-    <section id={id} className="relative h-screen w-full snap-start flex flex-col justify-center p-8 md:p-16 lg:p-24">
+    <section id={id} className="relative min-h-screen w-full snap-start flex flex-col justify-center p-8 md:p-16 lg:p-24">
       {subtitle && (
         <div className={`mb-12 ${animCls}`}>
           {subtitle}
@@ -33,6 +34,7 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
           </Button>
         </div>
       )}
+      {showForm && <LeadForm isActive={isActive} />}
     </section>
   )
 }
