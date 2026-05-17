@@ -58,8 +58,9 @@ export default function LeadForm({ isActive }: LeadFormProps) {
       setVk('')
       setTelegram('')
       try {
-        const w = window as unknown as { VK?: { Goal?: (event: string, params?: Record<string, unknown>) => void } }
-        w.VK?.Goal?.('lead')
+        const w = window as unknown as { _tmr?: Array<Record<string, unknown>> }
+        w._tmr = w._tmr || []
+        w._tmr.push({ id: '3766690', type: 'reachGoal', goal: 'lead' })
       } catch {
         // pixel optional
       }
