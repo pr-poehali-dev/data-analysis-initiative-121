@@ -39,6 +39,16 @@ export default function LandingPage() {
     }
   }
 
+  const handleTelegramClick = () => {
+    try {
+      const w = window as unknown as { _tmr?: Array<Record<string, unknown>> }
+      w._tmr = w._tmr || []
+      w._tmr.push({ id: '3766690', type: 'reachGoal', goal: 'telegram_click' })
+    } catch {
+      // pixel optional
+    }
+  }
+
   return (
     <Layout>
       <nav className="fixed top-0 right-0 h-screen flex flex-col justify-center z-30 p-4">
@@ -72,6 +82,7 @@ export default function LandingPage() {
         href="https://t.me/kredit1313bot_bot"
         target="_blank"
         rel="noopener noreferrer"
+        onClick={handleTelegramClick}
         className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-5 py-3 rounded-full bg-[#FF4D00] text-black font-semibold shadow-lg hover:bg-white transition-colors animate-tg-pulse"
       >
         <Icon name="Send" size={20} />

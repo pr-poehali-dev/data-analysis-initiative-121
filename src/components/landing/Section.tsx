@@ -5,6 +5,17 @@ import LeadForm from "./LeadForm"
 export default function Section({ id, title, subtitle, content, isActive, showButton, buttonText, buttonHref, showForm }: SectionProps) {
   const animCls = `transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
 
+  const trackTelegramClick = () => {
+    if (!buttonHref || !buttonHref.includes('t.me')) return
+    try {
+      const w = window as unknown as { _tmr?: Array<Record<string, unknown>> }
+      w._tmr = w._tmr || []
+      w._tmr.push({ id: '3766690', type: 'reachGoal', goal: 'telegram_click' })
+    } catch {
+      // pixel optional
+    }
+  }
+
   return (
     <section id={id} className="relative min-h-screen w-full snap-start flex flex-col justify-center p-8 md:p-16 lg:p-24">
       {subtitle && (
@@ -28,7 +39,7 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
             size="lg"
             className="text-[#FF4D00] bg-transparent border-[#FF4D00] hover:bg-[#FF4D00] hover:text-black transition-colors"
           >
-            <a href={buttonHref} target="_blank" rel="noopener noreferrer">
+            <a href={buttonHref} target="_blank" rel="noopener noreferrer" onClick={trackTelegramClick}>
               {buttonText}
             </a>
           </Button>
