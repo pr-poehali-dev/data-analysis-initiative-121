@@ -72,7 +72,7 @@ export default function LandingPage() {
         href="https://t.me/kredit1313bot_bot"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 left-6 z-40 flex items-center gap-2 px-5 py-3 rounded-full bg-[#FF4D00] text-black font-semibold shadow-lg hover:bg-white transition-colors animate-tg-pulse"
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-5 py-3 rounded-full bg-[#FF4D00] text-black font-semibold shadow-lg hover:bg-white transition-colors animate-tg-pulse"
       >
         <Icon name="Send" size={20} />
         Перейти в Telegram
