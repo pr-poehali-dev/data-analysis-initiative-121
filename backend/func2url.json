@@ -1,4 +1,5 @@
 {
+  "admin-leads": "https://functions.poehali.dev/f08ba18d-3c14-49d2-a90b-f87e1deed53c",
   "leads": "https://functions.poehali.dev/108695de-975b-459d-a362-ea22cb1afd46",
   "send-application": "https://functions.poehali.dev/879c0470-f3cd-482b-9b9b-cc662da18143"
 }

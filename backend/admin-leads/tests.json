@@ -1,0 +1,23 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Без пароля — 401",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 401
+    },
+    {
+      "name": "Неверный пароль — 401",
+      "method": "GET",
+      "path": "/",
+      "headers": {"X-Admin-Password": "wrong"},
+      "expectedStatus": 401
+    }
+  ]
+}
