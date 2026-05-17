@@ -8,7 +8,7 @@ export const sections: Section[] = [
     title: "Кредит для жителей Кавказа. Без предоплаты.",
     showButton: true,
     buttonText: 'Получить консультацию',
-    buttonHref: 'https://t.me/kredit1313bot_bot',
+    buttonHref: 'https://t.me/kredit13bot_bot',
   },
   {
     id: 'about',

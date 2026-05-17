@@ -79,7 +79,7 @@ export default function LandingPage() {
         ))}
       </div>
       <a
-        href="https://t.me/kredit1313bot_bot"
+        href="https://t.me/kredit13bot_bot"
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleTelegramClick}
